@@ -1,2 +1,2 @@
 // export const domain = "http://localhost";
-export const domain = "/";
+export const domain = "";
