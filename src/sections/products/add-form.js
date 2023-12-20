@@ -21,7 +21,6 @@ export default function AddProduct({
   function handleSubmit(e) {
     e.preventDefault();
     const fd = new FormData(formRef.current);
-    console.log({ name: fd.get("name"), price: fd.get("price") });
     fetch(domain + "/api/product" + (toEdit ? "/" + toEdit.id : ""), {
       method: toEdit ? "PUT" : "POST",
       body: JSON.stringify({ name: fd.get("name"), price: fd.get("price") }),

@@ -42,14 +42,17 @@ export default function AddOrder() {
   }, [itemList]);
 
   useEffect(() => {
-    const [domain, id] = window.location.href.split("/add-order/");
-    if (isNumber(Number(id))) setIsEdit(true);
+    // const [domain, id] = window.location.href.split("/add-order/");
+    const id = new URL(window.location.href).searchParams.get("id");
+
+    if (id) setIsEdit(true);
   }, []);
 
   useEffect(() => {
     if (!isEdit && products.length < 1) return;
 
-    const [, id] = window.location.href.split("/add-order/");
+    // const [, id] = window.location.href.split("/add-order/");
+    const id = new URL(window.location.href).searchParams.get("id");
     setOrderId(id);
 
     fetch(domain + "/api/order/" + id)
@@ -68,7 +71,7 @@ export default function AddOrder() {
         );
       });
   }, [isEdit, products]);
-  console.log(itemList);
+
   function handleAddToList() {
     if (!selectedProduct || quantity <= 0) {
       setMessageModal("Select a product and input a quantity");

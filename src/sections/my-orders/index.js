@@ -47,7 +47,7 @@ export default function MyOrders() {
   }
 
   function handleEdit(id) {
-    router.push("/add-order/" + id);
+    router.push("/add-order?id=" + id);
   }
 
   async function handleChangeStatus(order, newState) {
